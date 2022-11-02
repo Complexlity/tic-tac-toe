@@ -14,7 +14,6 @@ let dqa = document.querySelectorAll.bind(document)
 let gameboard = (function(){
     let player = 'X'
     let gameActive = true
-    let index
     let board = ['','','','','','','','','']
     /* winning sequence            Board Visualization
     [0][1][2] , [3][4][5]         [0, 1, 2]
@@ -29,7 +28,11 @@ let gameboard = (function(){
     }
 
     function populate(square){
-
+        let index = square.dataset.index
+        if(!board[index]){
+            board[index] =  player
+            square.textContent = player
+        }
     }
 
     return {populate, board}
@@ -38,5 +41,5 @@ let gameboard = (function(){
     
 let squares = dqa('.tiles')
 squares.forEach(square => {
-    square.addEventListener('click', () => gameboard.populate(square))
+    square.addEventListener('click', (e) => gameboard.populate(e.target))
 })
