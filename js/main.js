@@ -13,7 +13,6 @@ let dqa = document.querySelectorAll.bind(document)
 
 let gameboard = (function(){
     let player = 'X'
-    let gameActive = true
     let board = ['','','','','','','','','']
     /* winning sequence            Board Visualization
     [0][1][2] , [3][4][5]         [0, 1, 2]
@@ -22,6 +21,12 @@ let gameboard = (function(){
     [0][4][8] , [2][4][6]   */
     // TODO
     function switchPlayer(){
+        console.log(player)
+        if(player == 'X'){
+            player = 'O'
+            return
+        }
+        player = 'X'
     }
     
     function checkSequence(){
@@ -35,11 +40,17 @@ let gameboard = (function(){
         }
     }
 
-    return {populate, board}
+    function makeMove(square){
+        populate(square)
+        switchPlayer()
+    }
+
+    return {makeMove, board}
 
 })()
     
 let squares = dqa('.tiles')
 squares.forEach(square => {
-    square.addEventListener('click', (e) => gameboard.populate(e.target))
+    square.addEventListener('click', (e) => gameboard.makeMove(e.target))
 })
+
