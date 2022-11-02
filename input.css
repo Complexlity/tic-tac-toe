@@ -19,3 +19,7 @@
     aspect-ratio: 1;
 }
 
+.message {
+    display:none;
+}
+
