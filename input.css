@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.tiles {
+    background-color: orange;
+    border:1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiles:hover {
+    background-color: yellow;
+}
+
+.board{
+    aspect-ratio: 1;
+}
+
