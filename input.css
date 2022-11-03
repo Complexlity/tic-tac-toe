@@ -26,9 +26,7 @@
 }
 
 .message {
-    display:none;
-    font-size: 6rem;
-    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .restart {
