@@ -31,12 +31,9 @@ let gameboard = (function(){
         if(checkSequence()){
             winner = player
             gameOn = false 
-            board.forEach(value => value = '')
-            
         }
         else if (board.every(value => value)){
             gameOn = false
-            board.forEach(value => value = '')
         }
         return {winner, gameOn}
     }
