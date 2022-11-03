@@ -5,13 +5,6 @@
 // 4. If not won, switch players and repeat steps 2-4
 // 5. Call draw
 
-
-
-let c = console.log.bind(document)
-let dq = document.querySelector.bind(document)
-let dqa = document.querySelectorAll.bind(document)
-let gameStarted = true
-
 let gameboard = (function(){
     let player = 'X'
     let board = ['','','','','','','','','']
@@ -23,14 +16,6 @@ let gameboard = (function(){
     ]
    
     // TODO
-    function switchPlayer(){
-        if(player == 'X'){
-            player = 'O'
-            return
-        }
-        player = 'X'
-    }
-    
     function populate(square){
         let index = square.dataset.index
         
@@ -39,15 +24,7 @@ let gameboard = (function(){
             square.textContent = player
         }
     }    
-
-    function checkSequence(){
-        return winningSequence.some(isValidSequence)
-    }
-
-    function isValidSequence(arr){
-        return arr.every((value) => board[value] == player)
-    }
-
+    
     function checkGame(){
         winner = undefined
         gameOn = true
@@ -57,29 +34,37 @@ let gameboard = (function(){
             board.forEach(value => value = '')
             
         }
-        else if (board.every(value => value == true)){
+        else if (board.every(value => value)){
             gameOn = false
             board.forEach(value => value = '')
         }
         return {winner, gameOn}
     }
-
-function makeMove(square){
-    populate(square)
-    let winningCheck = checkGame()
-    if(!gameOn){
-        let winner = winningCheck.winner
-        if(winningCheck.winner){
-            result = `${winner} wins`
+    function switchPlayer(){
+        if(player == 'X'){
+            player = 'O'
+            return 
         }
-        else result = "it's a draw"
-        
+        player = 'X'
+    }
+    
+    function makeMove(square){
+        populate(square)
+        let winningCheck = checkGame()
+        if(!gameOn){
+            let winner = winningCheck.winner
+            if(winningCheck.winner){
+                result = `${winner} wins`
+            }
+            else {
+                result = "it's a draw"
+            }
         resetDefaults()
         return result
     }
     else{
         switchPlayer()
-        return false
+        return false 
     }
 }
 
@@ -89,13 +74,28 @@ function resetDefaults(){
     board = ['','','','','','','','','']
 }
 
-    return {makeMove, checkGame, switchPlayer, resetDefaults}
+    function checkSequence(){
+        return winningSequence.some(isValidSequence)
+    }
+
+    function isValidSequence(arr){
+        return arr.every((value) => board[value] == player)
+    }
+
+    return {makeMove, checkGame, switchPlayer, resetDefaults, player}
 
 })()
     
+let c = console.log.bind(document)
+let dq = document.querySelector.bind(document)
+let dqa = document.querySelectorAll.bind(document)
+let gameStarted = false
 let squares = dqa('[data-index]')
 let start = dq('.start')
 let message = dq('.message')
+let running = dq('.running')
+let player = dq('.running span')
+let playerTurn = "X"
 
 squares.forEach(square => {
     square.addEventListener('click', playGame)
@@ -105,17 +105,24 @@ start.addEventListener('click', startGame)
 function playGame(){
     if (gameStarted){
         let gameResult = gameboard.makeMove(this)
-        // c(message)
         if(gameResult) {
             message.style.display='block'
             message.textContent = gameResult
             gameStarted = false 
+            running.style.display = 'none'
             start.style.display = 'block' 
+            start.classList.add('restart')
+            start.textContent = 'Restart'
+            return
         }
+        switchPlayer()
+        running.style.display = 'block'
+        player.textContent = playerTurn
 }
 }
 
 function startGame(){
+    running.style.display = 'block'
     gameStarted = true
     this.style.display = 'none';
     squares.forEach(square => {
@@ -123,5 +130,13 @@ function startGame(){
     })
     message.style.display = 'none'
 
+}
+
+function switchPlayer(){
+    if(playerTurn == 'X'){
+        playerTurn = 'O'
+        return 
+    }
+    playerTurn = 'X'
 }
 

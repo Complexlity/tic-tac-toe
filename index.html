@@ -9,21 +9,22 @@
     <script src="js/main.js" defer></script>
 </head>
 <body>
-        <div class="part | flex flex-col gap-14 items-center h-screen bg-gray-300">
+        <div class="part | flex flex-col gap-10 items-center h-screen bg-gray-200">
             <h1 class="text-6xl font-mono text-center mt-8 tracking-tight">TIC TAC TOE</h1>
+            <p class="message text-2xl font-bold font-mono"></p>
             <div class="board | grid grid-cols-3 w-96 mx-auto text-5xl">
-                <div data-index="0" class="tiles"></div>
-                <div data-index="1" class="tiles"></div>
-                <div data-index="2" class="tiles"></div>
-                <div data-index="3" class="tiles"></div>
+                <div data-index="0" class="tiles no-top no-left"></div>
+                <div data-index="1" class="tiles no-top"></div>
+                <div data-index="2" class="tiles no-top no-right"></div>
+                <div data-index="3" class="tiles no-left"></div>
                 <div data-index="4" class="tiles"></div>
-                <div data-index="5" class="tiles"></div>
-                <div data-index="6" class="tiles"></div>
-                <div data-index="7" class="tiles"></div>
-                <div data-index="8" class="tiles"></div>
+                <div data-index="5" class="tiles no-right"></div>
+                <div data-index="6" class="tiles no-bottom no-left"></div>
+                <div data-index="7" class="tiles no-bottom"></div>
+                <div data-index="8" class="tiles no-bottom no-right"></div>
             </div>
-            <p class="message"></p>
             <button class="start | py-3 px-8 rounded-lg bg-green-600 hover:bg-green-400">Start Game</button>
+            <buttom class="running | hidden rounded-3xl px-4 py-4 bg-orange-300 text-2xl "><span class="turn">X</span> to play</button>
         </div>
     </div>
     

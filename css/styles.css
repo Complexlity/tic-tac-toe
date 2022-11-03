@@ -574,6 +574,10 @@ video {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -594,12 +598,24 @@ video {
   align-items: center;
 }
 
-.gap-14 {
-  gap: 3.5rem;
+.gap-10 {
+  gap: 2.5rem;
 }
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.rounded-3xl {
+  border-radius: 1.5rem;
 }
 
 .bg-gray-300 {
@@ -612,6 +628,16 @@ video {
   background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 
+.bg-orange-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 186 116 / var(--tw-bg-opacity));
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -620,6 +646,26 @@ video {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .text-center {
@@ -635,25 +681,51 @@ video {
   line-height: 1;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .tracking-tight {
   letter-spacing: -0.025em;
 }
 
+:root {
+  --tile-size:8rem;
+}
+
 .tiles {
-  background-color: orange;
-  border:1px solid green;
+  background-color:#eee;
+  border:3px solid black;
+  width:var(--tile-size);
+  height:var(--tile-size);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size:calc(var(--tile-size) * .7)
 }
 
 .tiles:hover {
-  background-color: yellow;
+  background-color: white;
 }
 
 .board{
@@ -662,10 +734,31 @@ video {
 
 .message {
   display:none;
+  font-size: 6rem;
+  font-weight: bold;
+}
+
+.restart {
+  background-color: red;
+}
+
+.no-top {
+  border-top:none;
+}
+
+.no-bottom {
+  border-bottom:none;
+}
+
+.no-left {
+  border-left:none;
+}
+
+.no-right {
+  border-right:none;
 }
 
 .hover\:bg-green-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
 }
-
