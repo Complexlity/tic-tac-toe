@@ -23,7 +23,6 @@ let gameboard = (function(){
             board[index] =  player
             square.textContent = player
         }
-        c(board)
     }    
     
     function checkGame(){
@@ -104,10 +103,10 @@ squares.forEach(square => {
 start.addEventListener('click', startGame)
 
 function playGame(){
-    let that = this.textContent
+    let playerValue = this.textContent
 
     if (gameStarted){
-        if(that) return
+        if(playerValue) return
         let gameResult = gameboard.makeMove(this)
         if(gameResult) {
             message.style.display='block'
@@ -119,7 +118,7 @@ function playGame(){
             start.textContent = 'Restart'
         }
         else {
-            switchPlayer()
+            switchPlayer(playerValue)
         running.style.display = 'block'
         player.textContent = playerTurn
         }
