@@ -130,7 +130,8 @@ function startGame(){
         square.textContent = ''
     })
     message.style.display = 'none'
-
+    playerTurn = "X"
+    player.textContent = playerTurn
 }
 
 function switchPlayer(){
